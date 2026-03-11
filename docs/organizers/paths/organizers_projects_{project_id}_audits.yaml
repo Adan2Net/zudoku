@@ -1,0 +1,35 @@
+get:
+  summary: Ver auditorías de un proyecto
+  description: Devuelve el historial de auditorías y cambios relevantes realizados sobre un proyecto.
+  operationId: organizersListProjectAudits
+  tags:
+    - Organizer Auditorías
+  parameters:
+    - name: project_id
+      in: path
+      description: Identificador del proyecto a auditar.
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: Lista de auditorías del proyecto.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: audit_001
+                action:
+                  type: string
+                  example: bundle_created
+                performed_by:
+                  type: string
+                  example: organizer_01
+                performed_at:
+                  type: string
+                  format: date-time

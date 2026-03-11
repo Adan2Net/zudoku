@@ -1,0 +1,28 @@
+get:
+  summary: Listar accesos de usuario
+  description: Lista los usuarios que tienen acceso de organizer y sus permisos asociados.
+  operationId: organizersListUserAccesses
+  tags:
+    - Organizer Usuarios
+  responses:
+    "200":
+      description: Lista de usuarios con acceso de organizer.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: user_123
+                email:
+                  type: string
+                  format: email
+                  example: organizer@example.com
+                roles:
+                  type: array
+                  items:
+                    type: string
+                    example: organizer

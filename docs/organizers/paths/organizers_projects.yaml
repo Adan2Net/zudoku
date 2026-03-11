@@ -1,0 +1,25 @@
+get:
+  summary: Listar proyectos como organizer
+  description: Lista todos los proyectos de documentación disponibles para usuarios con permisos de organizer.
+  operationId: organizersListProjects
+  tags:
+    - Organizer Proyectos
+  responses:
+    "200":
+      description: Lista de proyectos administrables.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: proj_123
+                name:
+                  type: string
+                  example: Portal de APIs Zudoku
+                status:
+                  type: string
+                  example: active
