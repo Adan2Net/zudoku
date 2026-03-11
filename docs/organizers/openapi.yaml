@@ -1,0 +1,24 @@
+openapi: 3.1.0
+info:
+  title: Zudoku Organizer API
+  version: 1.0.0
+  description: >
+    Endpoints administrativos para gestionar proyectos, bundles y accesos
+    avanzados en Zudoku. Pensados para usuarios con permisos de organizer.
+servers:
+  - url: /organizers
+    description: Entorno de ejemplo Organizer
+paths:
+  /organizers/projects:
+    $ref: paths/organizers_projects.yaml
+  /organizers/projects/{project_id}/audits:
+    $ref: paths/organizers_projects_{project_id}_audits.yaml
+  /organizers/user_accesses:
+    $ref: paths/organizers_user_accesses.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >
+        Token de acceso con permisos de organizer.
