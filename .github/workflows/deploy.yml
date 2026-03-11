@@ -38,26 +38,20 @@ jobs:
 
       - name: Prepare output for GitHub Pages
         run: |
-          # Zudoku genera foo.html por ruta; GitHub Pages no sirve /foo desde foo.html
-          # en subdirectorios, así que lo convertimos a foo/index.html
-          find docs/dist/zudoku -name "*.html" ! -name "index.html" | while IFS= read -r f; do
-            dir="${f%.html}"
-            mkdir -p "$dir"
-            mv "$f" "$dir/index.html"
-          done
-          # El index.html que genera Zudoku para "/" es un redirect fino
-          # (window.location.href=...). Lo reemplazamos con la página real de
-          # introducción para que /zudoku/ tenga contenido y sirva como SPA shell.
-          if [ -f docs/dist/zudoku/introduction/index.html ]; then
-            cp docs/dist/zudoku/introduction/index.html docs/dist/zudoku/index.html
-            # 404.html para rutas SPA sin pre-render (p.ej. /v1/operations/...)
-            cp docs/dist/zudoku/introduction/index.html docs/dist/404.html
-          fi
+          SITE_DIR=docs/dist/zudoku
+
+          # Copiar introduction.html como SPA shell para el 404 fallback
+          # (GitHub Pages sirve 404.html para rutas SPA sin archivo estático)
+          cp "$SITE_DIR/introduction.html" "$SITE_DIR/404.html"
+
+          # El index.html raíz es solo un redirect JS; reemplazarlo con la
+          # página real de introduction para que /zudoku/ cargue contenido
+          cp "$SITE_DIR/introduction.html" "$SITE_DIR/index.html"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/dist
+          path: docs/dist/zudoku
 
   deploy:
     needs: build
