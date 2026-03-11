@@ -28,7 +28,7 @@ get:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/Project"
+              $ref: ../components/schemas.yaml#/Project
 post:
   summary: Crear proyecto
   description: Crea un nuevo proyecto de documentación en Zudoku.
@@ -40,11 +40,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: "#/components/schemas/ProjectInput"
+          $ref: ../components/schemas.yaml#/ProjectInput
   responses:
     "201":
       description: Proyecto creado correctamente.
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Project"
+            $ref: ../components/schemas.yaml#/Project

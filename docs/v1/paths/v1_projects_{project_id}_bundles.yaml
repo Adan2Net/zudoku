@@ -19,7 +19,7 @@ get:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/Bundle"
+              $ref: "../components/schemas.yaml#/Bundle"
 post:
   summary: Crear bundle para un proyecto
   description: Genera un nuevo bundle OpenAPI a partir de la configuración del proyecto.
@@ -38,11 +38,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: "#/components/schemas/BundleInput"
+          $ref: "../components/schemas.yaml#/BundleInput"
   responses:
     "201":
       description: Bundle creado correctamente.
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Bundle"
+            $ref: "../components/schemas.yaml#/Bundle"

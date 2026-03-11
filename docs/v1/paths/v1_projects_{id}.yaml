@@ -17,7 +17,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Project"
+            $ref: "../components/schemas.yaml#/Project"
     "404":
       description: Proyecto no encontrado.
 patch:
@@ -38,11 +38,11 @@ patch:
     content:
       application/json:
         schema:
-          $ref: "#/components/schemas/ProjectInput"
+          $ref: "../components/schemas.yaml#/ProjectInput"
   responses:
     "200":
       description: Proyecto actualizado correctamente.
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Project"
+            $ref: "../components/schemas.yaml#/Project"

@@ -1,0 +1,42 @@
+Project:
+  type: object
+  properties:
+    id:
+      type: string
+      example: proj_123
+    name:
+      type: string
+      example: Portal de APIs Zudoku
+    description:
+      type: string
+      example: Proyecto de ejemplo para documentar APIs con Zudoku.
+
+ProjectInput:
+  type: object
+  properties:
+    name:
+      type: string
+    description:
+      type: string
+  required:
+    - name
+
+Bundle:
+  type: object
+  properties:
+    id:
+      type: string
+      example: bndl_001
+    project_id:
+      type: string
+      example: proj_123
+    status:
+      type: string
+      example: completed
+
+BundleInput:
+  type: object
+  properties:
+    target_version:
+      type: string
+      example: v1
