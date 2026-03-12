@@ -76,7 +76,7 @@ const config = {
   apis: [
     {
       type: "url",
-      iinput: "https://rickandmorty.zuplo.io/openapi.json",
+      input: "https://rickandmorty.zuplo.io/openapi.json",
       path: "/v1",
       options: {
         showInfoPage: false,
