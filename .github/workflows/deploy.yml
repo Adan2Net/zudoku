@@ -67,27 +67,6 @@ jobs:
             }
           "
 
-      - name: Download Aleluya API
-        working-directory: docs
-        run: |
-          # Descargar YAML desde URL externa
-          curl -H "User-Agent: Mozilla/5.0" -H "Accept: application/x-yaml, text/yaml" \
-               -L -o /tmp/aleluya.yaml https://api.aleluya.com/docs
-          # Verificar que el archivo se descargó correctamente
-          if [ ! -s /tmp/aleluya.yaml ]; then
-            echo "Error: Failed to download aleluya.yaml"
-            exit 1
-          fi
-          # Verificar que tiene la propiedad 'openapi' o 'swagger'
-          if ! grep -q "^openapi:" /tmp/aleluya.yaml && ! grep -q "^swagger:" /tmp/aleluya.yaml; then
-            echo "Error: Downloaded file does not appear to be a valid OpenAPI spec"
-            cat /tmp/aleluya.yaml | head -20
-            exit 1
-          fi
-          # Copiar YAML directamente (ya está en formato YAML)
-          cp /tmp/aleluya.yaml .bundled/aleluya.yaml
-          echo "✓ Aleluya API descargada (YAML)"
-
       - name: Build
         working-directory: docs
         run: npm run build
