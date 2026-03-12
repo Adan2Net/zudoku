@@ -74,6 +74,11 @@ const config = {
       to: "/rickandmorty",
       label: "Rick and Morty API",
     },
+    {
+      type: "link",
+      to: "/aleluya",
+      label: "Aleluya API",
+    },
   ],
   docs: {
     files: "/pages/**/*.mdx",
@@ -99,6 +104,14 @@ const config = {
       type: "file",
       input: "./.bundled/rickandmorty.yaml",
       path: "/rickandmorty",
+      options: {
+        showInfoPage: false,
+      },
+    },
+    {
+      type: "file",
+      input: "./.bundled/aleluya.yaml",
+      path: "/aleluya",
       options: {
         showInfoPage: false,
       },
